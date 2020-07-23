@@ -1,0 +1,26 @@
+{
+    "name": "@rabiloo/react-native-toast",
+    "version": "0.0.1",
+    "description":
+      "Toast View for react native",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/rabiloo/react-native-toast.git"
+    },
+    "author":
+      "vokhuyetOz",
+    "license": "MIT RABILOO",
+    "keywords": ["react-native", "ios", "android", "language"],
+    "dependencies": {},
+    "publishConfig": {
+      "registry": "https://registry.npmjs.org/"
+    },
+    "peerDependencies": {
+      "react": "^16.8.6",
+      "react-native": ">=0.60.0"
+    }
+  }
