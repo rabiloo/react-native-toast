@@ -52,7 +52,7 @@ ToastService.set('Hello world');
 
 ```
 
-## Properties
+## Properties for <Toast />
 
 ### `wrapperStyle?: object`
 
