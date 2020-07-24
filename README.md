@@ -9,6 +9,9 @@ Toast Message in Multiple Lines
 </div>
 
 <p align="center" >
+ <kbd>
+    <img src="docs/assets/toast.gif" style="height:300px" title="toast Demo" float="center">
+  </kbd>
   <em>Toast example app.</em>
 </p>
 
