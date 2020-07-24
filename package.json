@@ -1,6 +1,6 @@
 {
     "name": "@rabiloo/react-native-toast",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description":
       "Toast View for react native",
     "main": "index.js",
