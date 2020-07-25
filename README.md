@@ -51,11 +51,15 @@ export default function App() {
 ```jsx
 - Step 2: use ToastService to push a message
 
-ToastService.set('Hello world');
+ToastService.set({message: 'Hello world', position: 'top'});
+
+- position: String
+  Position of the toast: 'top', 'bottom'. Default is bottom.
+- message: String
 
 ```
 
-## Properties for ``` <Toast />```
+## Properties for `<Toast />`
 
 ### `wrapperStyle?: object`
 
@@ -81,21 +85,13 @@ The duration for which a toast is displayed on screen
 
 ---
 
-### `position: number`
-
-Position of the toast from bottom 
-Default: "5%"
-Can use by wrapperStyle to style by yourself
-
----
-
 ### `numberDisplay: number`
 
 Number of toast is displayed on the screen
 
 ---
 
-## 
+##
 
 This simplifies the development and the testing of the project.
 
