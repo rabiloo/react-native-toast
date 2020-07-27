@@ -8,6 +8,8 @@ import React, {
 import {Animated, View, Text} from 'react-native';
 import {ToastService} from './ToastService';
 
+import PropTypes from 'prop-types';
+
 const ToastItem = (props) => {
   const {style, textStyle, duration} = props.data;
   const {message, removeItem} = props;
@@ -126,5 +128,11 @@ const Toast = forwardRef((props, ref) => {
     return null;
   }
 });
+
+Toast.propTypes = {
+  wrapperStyle: PropTypes.elementType,
+  numberDisplay: PropTypes.number,
+  position: PropTypes.number,
+};
 
 export {Toast};
