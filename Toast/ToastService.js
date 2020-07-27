@@ -1,6 +1,6 @@
 const changeObject = {};
 
-let data = '';
+let data = { message: "", position: "" };
 
 function broadcast() {
   Object.keys(changeObject).forEach((k) => changeObject[k]());
@@ -10,7 +10,8 @@ const ToastService = {
   get: () => data,
 
   set: async (newData) => {
-    data = newData;
+    data.message = newData.message;
+    data.position = !!newData.position ? newData.position : "bottom";
     broadcast();
   },
 
@@ -25,4 +26,4 @@ const ToastService = {
   },
 };
 
-export {ToastService};
+export { ToastService };

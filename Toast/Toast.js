@@ -4,13 +4,13 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useEffect,
-} from 'react';
-import {Animated, View, Text} from 'react-native';
-import {ToastService} from './ToastService';
+} from "react";
+import { Animated, View, Text } from "react-native";
+import { ToastService } from "./ToastService";
 
 const ToastItem = (props) => {
-  const {style, textStyle, duration} = props.data;
-  const {message, removeItem} = props;
+  const { style, textStyle, duration } = props.data;
+  const { message, removeItem } = props;
   const animateOpacityValue = useRef(new Animated.Value(0));
   const refItem = useRef();
 
@@ -44,20 +44,22 @@ const ToastItem = (props) => {
           paddingVertical: 9,
           borderRadius: 12,
           opacity: animateOpacityValue.current,
-          backgroundColor: 'rgba(1,1,1,0.7)',
+          backgroundColor: "rgba(1,1,1,0.7)",
         },
         style,
-      ]}>
+      ]}
+    >
       <Text
         style={[
           {
             fontSize: 18,
-            alignSelf: 'stretch',
-            textAlign: 'center',
-            color: 'white',
+            alignSelf: "stretch",
+            textAlign: "center",
+            color: "white",
           },
           textStyle,
-        ]}>
+        ]}
+      >
         {message}
       </Text>
     </Animated.View>
@@ -65,8 +67,9 @@ const ToastItem = (props) => {
 };
 
 const Toast = forwardRef((props, ref) => {
-  const {wrapperStyle, position, numberDisplay} = props;
+  const { wrapperStyle, numberDisplay } = props;
   const list = useRef([]);
+  const position = useRef("bottom");
   const [, setShow] = useState(false);
   const refToast = useRef();
 
@@ -75,20 +78,21 @@ const Toast = forwardRef((props, ref) => {
   }));
 
   useEffect(() => {
-    ToastService.addEventListener('Toast', showToast);
+    ToastService.addEventListener("Toast", showToast);
     return () => {
-      ToastService.removeEventListener('Toast');
+      ToastService.removeEventListener("Toast");
     };
   }, []);
 
-  const showToast = (message) => {
+  const showToast = (data) => {
     if (list.current.length >= numberDisplay) {
       list.current.shift();
     }
     list.current = [
       ...list.current,
-      {message: message, timeSet: new Date().getTime()},
+      { message: data.message, timeSet: new Date().getTime() },
     ];
+    position.current = data.position;
     setShow((prev) => !prev);
   };
 
@@ -103,17 +107,18 @@ const Toast = forwardRef((props, ref) => {
         ref={refToast}
         style={[
           {
-            position: 'absolute',
-            bottom: position || '5%',
+            position: "absolute",
+            bottom: position.current === "bottom" ? "5%" : "90%",
             zIndex: 9999,
-            alignSelf: 'center',
+            alignSelf: "center",
           },
           wrapperStyle,
-        ]}>
+        ]}
+      >
         {list.current.map((item, index) => {
           return (
             <ToastItem
-              key={'' + item.message + item.timeSet}
+              key={"" + item.message + item.timeSet}
               message={item.message}
               data={props}
               removeItem={removeItem}
@@ -127,4 +132,4 @@ const Toast = forwardRef((props, ref) => {
   }
 });
 
-export {Toast};
+export { Toast };
