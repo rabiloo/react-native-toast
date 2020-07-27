@@ -8,7 +8,7 @@ function broadcast() {
 
 /**
  * @param {String} message - Message toast
- * @param {Number} position - Position from bottom (pixel)
+ * @param {String} position - Position "top" || "bottom"
  */
 
 const ToastService = {
