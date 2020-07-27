@@ -128,7 +128,7 @@ Toast.propTypes = {
   wrapperStyle: ViewPropTypes.style,
   numberDisplay: PropTypes.number,
   duration: PropTypes.number,
-  textStyle: TextPropTypes.style,
+  textStyle: PropTypes.any,
   style: ViewPropTypes.style
 };
 
