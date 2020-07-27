@@ -3,7 +3,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import { Animated, View, Text, ViewPropTypes } from "react-native";
+import { Animated, View, Text, ViewPropTypes, TextPropTypes } from "react-native";
 import PropTypes from 'prop-types';
 
 import { ToastService } from "./ToastService";
@@ -12,7 +12,6 @@ const ToastItem = (props) => {
   const { style, textStyle, duration } = props.data;
   const { message, removeItem } = props;
   const animateOpacityValue = useRef(new Animated.Value(0));
-  const refItem = useRef();
 
   useEffect(() => {
     Animated.timing(animateOpacityValue.current, {
@@ -35,7 +34,6 @@ const ToastItem = (props) => {
 
   return (
     <Animated.View
-      ref={refItem}
       style={[
         {
           marginHorizontal: 20,
@@ -129,6 +127,9 @@ const Toast = (props, ref) => {
 Toast.propTypes = {
   wrapperStyle: ViewPropTypes.style,
   numberDisplay: PropTypes.number,
+  duration: PropTypes.number,
+  textStyle: TextPropTypes.style,
+  style: ViewPropTypes.style
 };
 
 export { Toast };
