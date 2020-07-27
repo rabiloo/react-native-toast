@@ -1,1 +1,1 @@
-export * from './Toast';
+export {Toast, ToastService} from './Toast';
