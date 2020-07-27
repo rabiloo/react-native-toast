@@ -3,7 +3,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import { Animated, View, Text } from "react-native";
+import { Animated, View, Text, ViewPropTypes } from "react-native";
 import PropTypes from 'prop-types';
 
 import { ToastService } from "./ToastService";
@@ -127,9 +127,8 @@ const Toast = (props, ref) => {
 };
 
 Toast.propTypes = {
-  wrapperStyle: PropTypes.elementType,
+  wrapperStyle: ViewPropTypes.style,
   numberDisplay: PropTypes.number,
-  position: PropTypes.number,
 };
 
 export { Toast };
