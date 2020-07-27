@@ -1,11 +1,11 @@
 import React, {
   useState,
   useRef,
-  forwardRef,
-  useImperativeHandle,
   useEffect,
 } from "react";
 import { Animated, View, Text } from "react-native";
+import PropTypes from 'prop-types';
+
 import { ToastService } from "./ToastService";
 
 const ToastItem = (props) => {
@@ -66,16 +66,11 @@ const ToastItem = (props) => {
   );
 };
 
-const Toast = forwardRef((props, ref) => {
+const Toast = (props, ref) => {
   const { wrapperStyle, numberDisplay } = props;
   const list = useRef([]);
   const position = useRef("bottom");
   const [, setShow] = useState(false);
-  const refToast = useRef();
-
-  useImperativeHandle(ref, () => ({
-    showToast,
-  }));
 
   useEffect(() => {
     ToastService.addEventListener("Toast", showToast);
@@ -104,7 +99,6 @@ const Toast = forwardRef((props, ref) => {
   if (list.current.length > 0) {
     return (
       <View
-        ref={refToast}
         style={[
           {
             position: "absolute",
@@ -130,6 +124,12 @@ const Toast = forwardRef((props, ref) => {
   } else {
     return null;
   }
-});
+};
+
+Toast.propTypes = {
+  wrapperStyle: PropTypes.elementType,
+  numberDisplay: PropTypes.number,
+  position: PropTypes.number,
+};
 
 export { Toast };
