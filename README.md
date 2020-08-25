@@ -35,7 +35,7 @@ yarn add https://github.com/rabiloo/react-native-toast.git
 - Step 1: Import Toast into your App.js file
 
 import React from 'react';
-import {Toast} from './elements';
+import {Toast} from '@rabiloo/react-native-toast';
 
 export default function App() {
   return (
@@ -50,6 +50,7 @@ export default function App() {
 
 ```jsx
 - Step 2: use ToastService to push a message
+import {ToastService} from '@rabiloo/react-native-toast';
 
 ToastService.set({message: 'Hello world', position: 'top'});
 

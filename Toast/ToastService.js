@@ -6,12 +6,17 @@ function broadcast() {
   Object.keys(changeObject).forEach((k) => changeObject[k]());
 }
 
+/**
+ * @param {String} message - Message toast
+ * @param {String} position - Position "top" || "bottom"
+ */
+
 const ToastService = {
   get: () => data,
 
-  set: async (newData) => {
-    data.message = newData.message;
-    data.position = !!newData.position ? newData.position : "bottom";
+  set: async ({message, position}) => {
+    data.message = message;
+    data.position = !!position ? position : "bottom";
     broadcast();
   },
 
